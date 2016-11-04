@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         去广告/去除百度推广以及无用功能
 // @namespace    http://tampermonkey.net/
-// @version      0.126
+// @version      0.127
 // @description  去掉百度推广以及辣鸡推广
 // @author       papipapipia <suningyo@gmail.com>
 // @match        http://www.baidu.com/s?*
@@ -21,7 +21,7 @@ var lj = {//1是打开
     {
         ad:	    1,//推广
         right:  1,//右边
-        baike:	1,//百科
+        baike:	0,//百科
         img:	1,//图片
         news:	1,//新闻
         tieba:	1,//贴吧
@@ -46,8 +46,8 @@ function baidu_i_fuck_you(){
             }
         }
     }
-    if(lj.info.right == 1){Id_hide('.result-op.xpath-log');Id_hide('.rrecom-btn-parent.rrecom-btn-s.rrecom-btn-moving.rrecom-btn-click');}//右边
-    if(lj.info.baike == 1){Id_hide('.c-border');}//百科(经验、翻译)
+    if(lj.info.right == 1){Id_hide('.rrecom-btn-parent.rrecom-btn-s.rrecom-btn-moving.rrecom-btn-click');}//右边
+    if(lj.info.baike == 1){Id_hide('.result-op.xpath-log');}//百科(经验、翻译)
     if(lj.info.img   == 1){Id_hide('.op-img-covers-desktop-cont');}//图片
     if(lj.info.news  == 1){Id_hide('.c-offset');}//新闻
     if(lj.info.tieba == 1){Id_hide('.op-tieba-general-maintable');Id_hide('.op-tieba-star-maintable');Id_hide('.op-tieba-general-lookmore.op-tieba-general-mainpl');}//贴吧
