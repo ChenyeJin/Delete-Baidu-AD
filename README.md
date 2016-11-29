@@ -6,7 +6,16 @@ dalao 勿喷 _(:з」∠)__
 
 脚本:<a href="https://greasyfork.org/zh-CN/scripts/19759-%E5%8E%BB%E5%B9%BF%E5%91%8A-%E5%8E%BB%E9%99%A4%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E4%BB%A5%E5%8F%8A%E6%97%A0%E7%94%A8%E5%8A%9F%E8%83%BD">戳这里</a>
 
+
 最近更新:
+
+2016年11月29日15:50:49
+
+[新增]
+
+1.[新增]支持过滤手机百度的广告(<a href="https://greasyfork.org/zh-CN/forum/profile/18937/Boolean_function">Boolean_function</a> 和 <a href="https://greasyfork.org/zh-CN/forum/profile/23/%E6%96%87%E7%A7%91">文科</a> 的建议)
+
+####################################################
 
 2016年11月4日15:18:22
 
@@ -14,7 +23,7 @@ dalao 勿喷 _(:з」∠)__
 
 1.修复<a href="https://greasyfork.org/zh-CN/users/36764-jungle%E4%B8%B6risk">Jungle丶Risk</a>提出的BUG
 
-###################################
+####################################################
 
 2016年9月30日23:39:16
 
