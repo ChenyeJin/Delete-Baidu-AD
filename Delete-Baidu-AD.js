@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         去广告/去除百度推广以及无用功能
 // @namespace    http://tampermonkey.net/
-// @version      0.128
+// @version      0.129
 // @description  去掉百度推广以及辣鸡推广
 // @author       papipapipia <suningyo@gmail.com> telegram:https://telegram.me/suningyo
 // @match        https://www.baidu.com/s?*
@@ -55,18 +55,21 @@
             */
             var fuck = document.getElementById("content_left").getElementsByTagName("div");
             for(var i = 0;i < fuck.length;i++){
-                var fuck_text = fuck[i].innerText;
-                if(fuck_text.indexOf('广告') > -1 /* || fuck_text.indexOf('电话') > -1*/)//可以手动添加关键词 建议两个字以上
+                var f_i = fuck[i];
+                var fuck_text = f_i.innerText;
+                if(fuck_text.indexOf('广告') > -1 || fuck_text.indexOf('免费咨询') > -1 /*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
                 {
-                    var fuck_cname = fuck[i].className;
-                    var fuck_id = fuck[i].id;
-                    if(fuck_id.indexOf('wrapper') > -1 || fuck_id.indexOf('container') > -1 && i > 55)
+                    var fuck_id = f_i.id;
+                    var fuck_style = f_i.style.visibility;
+                    if(fuck_id.indexOf('wrapper') > -1 || fuck_id.indexOf('container') > -1)
                     {
                         //白名单
                     }
-                    else
+                    else if(fuck_id > 0 || fuck_style == 'visible')
                     {
-                        Id_del('.' + fuck_cname);Id_del('#' + fuck_id);
+                        Id_del('#' + fuck_id);
+                        var fuck_classname = f_i.className;
+                        Id_del('.' + fuck_classname);
                     }
                 }
             }
@@ -88,5 +91,5 @@
         setTimeout(baidu_i_fuck_you, lj.time);
     }
     baidu_i_fuck_you();
-    
+
 })();
