@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         去广告/去除百度推广以及无用功能
 // @namespace    http://tampermonkey.net/
-// @version      0.129
+// @version      0.130
 // @description  去掉百度推广以及辣鸡推广
 // @author       papipapipia <suningyo@gmail.com> telegram:https://telegram.me/suningyo
 // @match        https://www.baidu.com/s?*
@@ -56,8 +56,8 @@
             var fuck = document.getElementById("content_left").getElementsByTagName("div");
             for(var i = 0;i < fuck.length;i++){
                 var f_i = fuck[i];
-                var fuck_text = f_i.innerText;
-                if(fuck_text.indexOf('广告') > -1 || fuck_text.indexOf('免费咨询') > -1 /*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
+                var fuck_text = f_i.innerHTML;
+                if(fuck_text.indexOf('广告</span>') > -1 || fuck_text.indexOf('免费咨询') > -1 /*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
                 {
                     var fuck_id = f_i.id;
                     var fuck_style = f_i.style.visibility;
