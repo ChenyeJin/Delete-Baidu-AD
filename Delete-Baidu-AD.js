@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         去广告/去除百度推广以及无用功能
 // @namespace    http://tampermonkey.net/
-// @version      0.130
+// @version      0.131
 // @description  去掉百度推广以及辣鸡推广
 // @author       papipapipia <suningyo@gmail.com> telegram:https://telegram.me/suningyo
 // @match        https://www.baidu.com/s?*
@@ -37,6 +37,11 @@
         平板走 m.baidu.com 这个域名好了 :q
         */
     };
+    
+    var blacklist = {
+        '广告</span>',
+        '免费咨询'
+    },keylens = 1; //可以自己添加黑名单列表，注意一起修改keylens,keylens总是黑名单内对象个数减1
     if(document.body.clientWidth > lj.width)
     {
         var nav = document.getElementById("s_tab");
@@ -57,21 +62,38 @@
             for(var i = 0;i < fuck.length;i++){
                 var f_i = fuck[i];
                 var fuck_text = f_i.innerHTML;
-                if(fuck_text.indexOf('广告</span>') > -1 || fuck_text.indexOf('免费咨询') > -1 /*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
-                {
-                    var fuck_id = f_i.id;
-                    var fuck_style = f_i.style.visibility;
-                    if(fuck_id.indexOf('wrapper') > -1 || fuck_id.indexOf('container') > -1)
+                for(var j = 1;j < keylens;j++){
+                    if(fuck_text.indexOf(blacklist[j]) > -1/*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
                     {
+                        var fuck_id = f_i.id;
+                        var fuck_style = f_i.style.visibility;
+                        if(fuck_id.indexOf('wrapper') > -1 || fuck_id.indexOf('container') > -1)
+                        {
                         //白名单
-                    }
-                    else if(fuck_id > 0 || fuck_style == 'visible')
-                    {
-                        Id_del('#' + fuck_id);
-                        var fuck_classname = f_i.className;
-                        Id_del('.' + fuck_classname);
+                        }
+                        else if(fuck_id > 0 || fuck_style == 'visible')
+                        {
+                            Id_del('#' + fuck_id);
+                            var fuck_classname = f_i.className;
+                            Id_del('.' + fuck_classname);
+                        }
                     }
                 }
+//                 if(fuck_text.indexOf('广告</span>') > -1 || fuck_text.indexOf('免费咨询') > -1 /*|| fuck_text.indexOf('装逼') > -1*/)//可以手动添加关键词 建议两个字以上
+//                 {
+//                     var fuck_id = f_i.id;
+//                     var fuck_style = f_i.style.visibility;
+//                     if(fuck_id.indexOf('wrapper') > -1 || fuck_id.indexOf('container') > -1)
+//                     {
+//                         //白名单
+//                     }
+//                     else if(fuck_id > 0 || fuck_style == 'visible')
+//                     {
+//                         Id_del('#' + fuck_id);
+//                         var fuck_classname = f_i.className;
+//                         Id_del('.' + fuck_classname);
+//                     }
+//                 }
             }
         }
         if(lj.info.right == 1){Id_del('#content_right');}//右边
